@@ -5,6 +5,9 @@ const cors = require ("cors"),
 
 dotenv.config({path: path.resolve(__dirname, '.env')})
 
+
+
+
 const app = express()
 
 app.use(cors({
@@ -25,7 +28,7 @@ app.use((req,res) => {
     return res.status(404).send('Not Found')
 })
 
-app.listen(process.env.SERVER_PORT, process.env.SERVER_HOTS, (err) => {
+app.listen(8080, process.env.SERVER_HOTS, (err) => {
     if(err){
         console.log('Error server setup')
     }
@@ -33,3 +36,4 @@ app.listen(process.env.SERVER_PORT, process.env.SERVER_HOTS, (err) => {
         console.log(`Server running at http://${process.env.SERVER_HOST}:${process.env.SERVER_PORT}`)
     }
 })
+
