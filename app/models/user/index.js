@@ -8,15 +8,6 @@ const User = sequelize.define('User', {
         allowNull: false,
         primaryKey: true
     },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
     nom: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -31,6 +22,16 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    
 
 }, {timestamps: true})
 // User.sync({ force: true })

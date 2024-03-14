@@ -7,7 +7,7 @@ exports.getAll = async (req, res) => {
 
 exports.create = async (req, res) => {
     // get body content of request
-    const { email, password, fullName } = req.body
+    const { nom, prenom, pseudo, email, password, fullName } = req.body
     try {
         const user = await userModel.create({
             nom,
@@ -24,7 +24,7 @@ exports.create = async (req, res) => {
         // return user.id ? res.status(200).json({ msg: 'OK', user}) : res.status(400).json({ msg: 'BAD REQUEST'})
     } catch (e) {
         console.error(e.message)
-        res.status(400).json({ msg: 'BAD REQUEST' + e.message})
+        res.status(400).json({ msg: 'BAD REQUEST ' + e.message})
     }
 }
 
@@ -32,9 +32,13 @@ exports.update = async (req, res) => {
     try {
         if (!req.params.uuid) return res.status(400).json({ msg: 'BAD REQUEST PARAMS IS REQUIRED'})
         if (!req.body) return res.status(400).json({ msg: 'BAD REQUEST BODY IS REQUIRED'})
-        const { email, password, fullName } = req.body
+        const { nom, prenom, pseudo, email, password, fullName } = req.body
         const { uuid } = req.params
         const user = await userModel.update({
+            email,
+            nom,
+            prenom,
+            pseudo,
             email,
             password: hashPassword(password),
             fullName

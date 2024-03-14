@@ -6,10 +6,12 @@ exports.getAll = async (req, res) => {
 
 exports.create = async (req, res) => {
     // get body content of request
-    const { name, price, quantity, userId } = req.body
+    const { nom, price, quantity,contenu,dateCreation, userId } = req.body
     try {
         const product = await productModel.create({
-            name,
+            nom,
+            contenu,
+            dateCreation,
             price: parseFloat(price),
             quantity: parseInt(quantity),
             userId
@@ -29,10 +31,12 @@ exports.update = async (req, res) => {
     try {
         if (!req.params.uuid) return res.status(400).json({ msg: 'BAD REQUEST PARAMS IS REQUIRED'})
         if (!req.body) return res.status(400).json({ msg: 'BAD REQUEST BODY IS REQUIRED'})
-        const { name, price, quantity, userId } = req.body
+        const { nom, price, quantity,contenu,dateCreation, userId } = req.body
         const { uuid } = req.params
         const product = await productModel.update({
-            name,
+            nom,
+            contenu,
+            dateCreation,
             price: parseFloat(price),
             quantity: parseInt(quantity),
             userId
