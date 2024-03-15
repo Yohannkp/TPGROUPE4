@@ -21,6 +21,8 @@ app.use(express.json())
 require('./app/routes')(app)
 
 app.get('/', (req, res) =>  {
+    
+
     return res.status(200).send('Hello World')
 })
 

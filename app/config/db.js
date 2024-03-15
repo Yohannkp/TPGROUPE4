@@ -2,26 +2,26 @@ const { Sequelize } = require('sequelize'),
     dotenv = require("dotenv");
 dotenv.config()
 
-// const mysql = require('mysql2');
+const mysql = require('mysql2');
 
-// Configurer la connexion à la base de données
-// const connection = mysql.createConnection({
-//   host: 'localhost',
-//  user: 'root',
-//  password: 'root'
-// });
+//Configurer la connexion à la base de données
+const connection = mysql.createConnection({
+  host: 'localhost',
+ user: 'root',
+ password: ''
+});
 
-// Créer une base de données
-//connection.query('CREATE DATABASE IF NOT EXISTS node', (err, results) => {
-//  if (err) {
-//    console.error('Erreur lors de la création de la base de données :', err);
-//    return;
-//  }
-//  console.log('Base de données créée avec succès.');
-//});
+//Créer une base de données
+connection.query('CREATE DATABASE IF NOT EXISTS node', (err, results) => {
+ if (err) {
+   console.error('Erreur lors de la création de la base de données :', err);
+   return;
+ }
+ console.log('Base de données créée avec succès.');
+});
 
-// Fermer la connexion
-//connection.end();
+//Fermer la connexion
+connection.end();
 
 
 
