@@ -7,7 +7,7 @@ exports.getAll = async (req, res) => {
 
 exports.create = async (req, res) => {
     // get body content of request
-    const { nom, prenom, pseudo, email, password, fullName } = req.body
+    const { nom, prenom, pseudo, email, password, fullName, token } = req.body
     try {
         const user = await userModel.create({
             nom,
@@ -15,7 +15,8 @@ exports.create = async (req, res) => {
             pseudo,
             email,
             password: hashPassword(password),
-            fullName
+            fullName,
+            token
         })
         if (!user.id){
             res.status(400).json({ msg: 'BAD REQUEST'})

@@ -1,10 +1,9 @@
 const jwt = require('jsonwebtoken');
-const UserModel = require('../models/user')
-const {decode} = require("jsonwebtoken");
+const UserModel = require('../models/user');
 
 const jwtSign = async (payload) => {
     try{
-        return jwt.sign(payload, process.env.SECRETPASS, {
+        return jwt.sign(payload, process.env.SECRET_PASS, {
             expiresIn: '1d'
         })
     } catch (e) {
@@ -34,7 +33,7 @@ const checkIsAuth = async (req, res, next) => {
     try {
         if(req.originalUrl.includes(process.env.API_PATH)) {
             const authHeader = req.headers['authorization']
-            const token = authHeader.splt(" ")[1]
+            const token = authHeader.split(" ")[1]
             const isValid = await jwtVerify(token)
             if (!isValid){
                 return res.status(401).json({msg: 'Unauthorized'})
