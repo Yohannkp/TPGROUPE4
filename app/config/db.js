@@ -49,7 +49,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 })();
 
 (async () => {
-    await sequelize.sync({ force: false });
+    await sequelize.sync({ force: true });
     console.log('Tables synchronisées avec succès.');
 })();
 

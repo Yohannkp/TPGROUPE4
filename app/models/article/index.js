@@ -24,7 +24,7 @@ const Article = sequelize.define('Article', {
     },
 
     dateCreation: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     isEnabled: {
