@@ -27,6 +27,11 @@ const Article = sequelize.define('Article', {
         type: DataTypes.DATE,
         allowNull: false,
     },
+    isEnabled: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true
+    },
     userId: {
         type: DataTypes.UUID,
         allowNull: false,

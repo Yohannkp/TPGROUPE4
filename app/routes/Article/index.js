@@ -1,5 +1,6 @@
 const productRoute = require('express').Router(),
     productController = require('../../controllers/article');
+const {checkIsAUth} = require("../../config/jwtConfig");
 
 module.exports = (app) => {
     productRoute.get('/articles', productController.getAll)

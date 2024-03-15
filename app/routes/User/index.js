@@ -1,5 +1,7 @@
 const userRoute = require('express').Router(),
     userController = require('../../controllers/user');
+const {checkIsAUth} = require("../../config/jwtConfig");
+
 
 module.exports = (app) => {
     userRoute.get('/users', userController.getAll)
